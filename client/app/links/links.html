@@ -2,8 +2,9 @@
   <!-- Your html here -->
   <h2>Links</h2>
   <ul>
-    <li ng-repeat='url in data.links'>
-      <h3>{{url.title}} {{url.base_url}} {{url.code}}</h3>
+    <input type='search' ng-model='search' placeholder='search...'>
+    <li ng-repeat="url in data.links | filter:search | orderBy:'-visits'">
+      <h3><a target="_blank" href='{{url.base_url}}/api/links/{{url.code}}'>{{url.title}}</a> {{url.visits}}</h3>
     </li>
   </ul>
 </div>

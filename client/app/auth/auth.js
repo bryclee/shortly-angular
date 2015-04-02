@@ -6,7 +6,8 @@ angular.module('shortly.auth', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
 
-  $scope.signin = function () {
+  $scope.signin = function (valid) {
+    if (valid === true) {
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.shortly', token);
@@ -15,16 +16,23 @@ angular.module('shortly.auth', [])
       .catch(function (error) {
         console.error(error);
       });
+    } else {
+      alert('Must be between 3-10');
+    }
   };
 
-  $scope.signup = function () {
-    Auth.signup($scope.user)
-      .then(function (token) {
-        $window.localStorage.setItem('com.shortly', token);
-        $location.path('/links');
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
+  $scope.signup = function (valid) {
+    if (valid === true) {
+      Auth.signup($scope.user)
+        .then(function (token) {
+          $window.localStorage.setItem('com.shortly', token);
+          $location.path('/links');
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    } else {
+      alert('Must be between 3-10');
+    }
   };
 });

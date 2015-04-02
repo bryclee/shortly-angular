@@ -6,7 +6,7 @@
     <button>Submit</button>
     <span class="error" ng-show="shortenForm.input.$error.url">Not valid url</span>
   </form>
-  <div>{{link.url + ' ' + link.code + ' ' + link.title}}</div>
+  <div><a href='{{link.base_link}}/api/links/{{link.code}}'>{{link.title}}</a> {{link.visits}}</div>
 </div>
 
 
