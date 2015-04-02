@@ -9,22 +9,25 @@ angular.module('shortly', [
   $routeProvider
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
     })
     .when('/signup', {
       templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
-    })
-    // Your code here
-    .when('/links', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'AuthController',
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      authenticate: true
     })
-
+    .when('/links', {
+      templateUrl: 'app/links/links.html',
+      controller: 'LinksController',
+      authenticate: true
+    })
+    .otherwise({
+      redirectTo: '/links'
+    })
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
