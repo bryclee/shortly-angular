@@ -4,6 +4,11 @@ body {
   font-family: arial, sans-serif;
 }
 
+ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
 a {
   color: #333;
   font-size: 14px;
@@ -87,10 +92,6 @@ h1 {
 .link .original {
   color: #aaa;
   font-size: 12px;
-}
-
-.link .info {
-  margin-left: 55px;
 }
 
 form {

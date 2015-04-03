@@ -4,7 +4,16 @@
   <ul>
     <input type='search' ng-model='search' placeholder='search...'>
     <li ng-repeat="url in data.links | filter:search | orderBy:'-visits'">
-      <h3><a target="_blank" href='{{url.base_url}}/api/links/{{url.code}}'>{{url.title}}</a> {{url.visits}}</h3>
+      <div class='link'>
+        <img src='../assets/redirect_icon.png'/>
+        <a class='info' href='{{url.base_url}}/api/links/{{url.code}}' target="_blank">
+          <div class='visits'><span class='count'>{{url.visits}}</span>Visits</div>
+          <span class='title'>{{ url.title }}</span>
+          <div class='original'>{{ url.url }}</div>
+          {{url.base_url}}/api/links/{{url.code}}
+        </a>
+      </div>
     </li>
   </ul>
 </div>
+
