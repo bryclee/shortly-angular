@@ -4,15 +4,14 @@ angular.module('shortly.shorten', [])
   // Your code here
   $scope.link = {};
 
-  $scope.addLink = function(data) {
+  $scope.addLink = function() {
     var link = {url: $scope.newLink}
-    $http.post('/api/links', link).
-      success(function(data, status, headers, config) {
-        $scope.link = data;
-        console.log(data);
-      }).
-      error(function(err) {
-        console.log('Error!', err);
-      });
+    Links.postLink(link)
+    .then(function(data) {
+      $scope.link = data;
+    })
+    .catch(function(err) {
+      console.log('Error!', err);
+    });
   };
 }); // add a factory later
