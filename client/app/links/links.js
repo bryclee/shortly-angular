@@ -10,4 +10,10 @@ angular.module('shortly.links', [])
   };
 
   $scope.getLinks();
+})
+.directive('linkTemplate', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'app/links/link_directive.html'
+  };
 });
